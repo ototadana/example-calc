@@ -1,0 +1,77 @@
+<link rel="import" href="components/polymer/polymer.html">
+<link rel="import" href="components/paper-button/paper-button.html">
+<link rel="import" href="components/core-ajax/core-ajax.html">
+
+<polymer-element name="calc-key" extends="paper-button">
+  <script>
+    Polymer('calc-key', {
+      raised: true
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="example-calc">
+  <template>
+    <style>
+      #container {
+        background-color: white;
+        padding: 10px 10px 16px 10px;
+        border-radius: 8px;
+      }
+      div {
+        font-family:'Lucida Grande', Meiryo, sans-serif;
+        font-size: 22pt;
+        color:gray;
+      }
+      calc-key {
+        background: #f0f0f0;
+        margin-top:10px;
+        min-width: 44px;
+      }
+      calc-key .button-content {
+        padding:8px;
+      }
+      #output {
+        color: white;
+        background-color: gray;
+        text-align: right;
+        padding: 20px;
+        border-radius: 8px;
+      }
+    </style>
+
+    <core-ajax auto handleAs="json" url="{{url}}" on-core-response="{{handleResponse}}"></core-ajax>
+
+    <div id="container" layout vertical>
+      <div id="output" auto-vertical layout>{{output}}</div>
+      <div auto-vertical horizontal layout>
+        <calc-key class="number" flex on-click="{{inputNumber}}">7</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">8</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">9</calc-key>
+        <calc-key class="operator" flex on-click="{{inputOperator}}">/</calc-key>
+      </div>
+      <div auto-vertical horizontal layout>
+        <calc-key class="number" flex on-click="{{inputNumber}}">4</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">5</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">6</calc-key>
+        <calc-key class="operator" flex on-click="{{inputOperator}}">*</calc-key>
+      </div>
+      <div auto-vertical horizontal layout>
+        <calc-key class="number" flex on-click="{{inputNumber}}">1</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">2</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">3</calc-key>
+        <calc-key class="operator" flex on-click="{{inputOperator}}">-</calc-key>
+      </div>
+      <div auto-vertical horizontal layout>
+        <calc-key class="number" flex on-click="{{inputNumber}}">0</calc-key>
+        <calc-key class="number" flex on-click="{{inputNumber}}">.</calc-key>
+        <calc-key id="enter" flex on-click="{{calculate}}">=</calc-key>
+        <calc-key class="operator" flex on-click="{{inputOperator}}">+</calc-key>
+      </div>
+      <calc-key id="clear" auto-vertical layout on-click="{{clear}}">CLEAR</calc-key>
+    </div>
+
+  </template>
+
+  <script src="./example-calc.js"></script>
+</polymer-element>
