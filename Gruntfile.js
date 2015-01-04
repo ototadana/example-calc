@@ -78,7 +78,7 @@ module.exports = function(grunt) {
           },
           nodeArgs: ['--harmony'],
           legacyWatch: true,
-          ignore: ['node_modules/', 'test/']
+          ignore: ['node_modules/', 'test/', 'test-results/', 'coverage/']
         }
       }
     }
