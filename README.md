@@ -1,6 +1,8 @@
 サンプル電卓アプリ calc
 =======================
 
+[![Build Status](https://travis-ci.org/ototadana/example-calc.svg)](https://travis-ci.org/ototadana/example-calc)
+
 これは何?
 ---------
 わりと新しめ（2015年1月時点）の JavaScript フレームワークを使ったアプリのサンプルとその自動テストプログラムのサンプル。
