@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "grunt jshint server-test mocha_istanbul"
+    "test": "node --harmony grunt jshint server-test mocha_istanbul"
   },
   "author": "ototadana <ototadana@gmail.com>",
   "license": "MIT",
