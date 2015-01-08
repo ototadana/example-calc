@@ -4,6 +4,9 @@ node_js:
   - "0.11"
 
 install:
-  - npm install grunt-cli bower
+  - npm install grunt-cli bower coveralls
   - npm install
   - bower install
+
+after_success:
+  - cat ./coverage/server/lcov.info | ./node_modules/coveralls/bin/coveralls.js
