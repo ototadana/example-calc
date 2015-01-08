@@ -2,6 +2,7 @@
 =======================
 
 [![Build Status](https://travis-ci.org/ototadana/example-calc.svg)](https://travis-ci.org/ototadana/example-calc)
+[![Coverage Status](https://img.shields.io/coveralls/ototadana/example-calc.svg)](https://coveralls.io/r/ototadana/example-calc?branch=master)
 
 これは何?
 ---------
