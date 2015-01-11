@@ -3,10 +3,23 @@ language: node_js
 node_js:
   - "0.11"
 
+before_install:
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  - sudo apt-add-repository "deb http://dl.google.com/linux/chrome/deb/ stable main"
+  - sudo sed -i s/deb-src.*google.*//g /etc/apt/sources.list
+  - sudo apt-get update -qq
+  - sudo apt-get install -y google-chrome-stable
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 install:
   - npm install grunt-cli bower coveralls
   - npm install
   - bower install
 
+before_script:
+  - node --harmony ./node_modules/grunt-cli/bin/grunt serve &
+  - sleep 3
+
 after_success:
-  - cat ./coverage/server/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/server/lcov.info ./coverage/client/lcov.info | ./node_modules/coveralls/bin/coveralls.js
