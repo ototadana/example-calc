@@ -1,7 +1,13 @@
 module.exports = function(config) {
   config.set({
     frameworks: ['mocha', 'chai'],
-    browsers: ['Chrome'],
+    customLaunchers: {
+      Chrome_NS: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+    browsers: ['Chrome_NS'],
     reporters: ['progress', 'coverage', 'junit'],
     preprocessors: {
       'test/client/**/*.html': ['html2js'],
