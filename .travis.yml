@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "0.11"
+  - "iojs"
 
 before_install:
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -13,12 +13,13 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - npm install grunt-cli bower coveralls
+  - npm install -g grunt-cli bower
+  - npm install coveralls
   - npm install
   - bower install
 
 before_script:
-  - node --harmony ./node_modules/grunt-cli/bin/grunt serve &
+  - grunt serve &
   - sleep 3
 
 after_success:
